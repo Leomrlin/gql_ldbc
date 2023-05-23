@@ -27,25 +27,15 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: PWD Scan
-      uses: jveres/pwd-action@v1
+    - name: PMD Scan
+      uses: pmd/pmd-action@v1.5.0
       with:
-       type: 'LINT'
-
-    - name: Check for Blocker and Critical Issues
-      if: steps.pwd_scan.outputs.blocker != '0' || steps.pwd_scan.outputs.critical != '0'
-      run: |
-        if [ "${{ steps.pwd_scan.outputs.blocker }}" != "0" ]; then
-          echo "Blocker issues found"
-          exit 1
-        elif [ "${{ steps.pwd_scan.outputs.critical }}" != "0" ]; then
-          echo "Critical issues found"
-          exit 1
-        fi
-
-    - name: Pass Pipeline for No Blocker or Critical Issues
-      if: steps.pwd_scan.outputs.blocker == '0' && steps.pwd_scan.outputs.critical == '0'
-      run: echo 'No Blocker or Critical issues found'
+        type: 'LINT' # 指定 type 为 LINT
+        version: '6.32.0' # 使用 PDM 版本号
+        ruleset: 'java/quickstart.xml' # 使用规则集
+        fail-on-violation: true # 发现问题时失败
+        fail-on: 'blocker,critical' # 指定 blocker 和 critical 级别问题时失败
+        exclude-pattern: '**/*Test.java,**/proto/**' # 排除指定文件
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
