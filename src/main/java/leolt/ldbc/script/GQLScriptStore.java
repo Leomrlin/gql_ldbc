@@ -2,7 +2,6 @@ package leolt.ldbc.script;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import javafx.util.Pair;
 import org.apache.commons.io.IOUtils;
 
 public class GQLScriptStore {
