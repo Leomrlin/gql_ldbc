@@ -27,12 +27,14 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: PMD Scan
-      uses: pmd/pmd-action@v1.5.0
+    - name: Run PMD
+      id: pmd
+      uses: pmd/pmd-github-action@967a81f8b657c87f7c3e96b62301cb1a48efef29
       with:
+        rulesets: 'rulesets/java/quickstart.xml'
+        sourcePath: 'src/main/java'
+        analyzeModifiedFilesOnly: false
         type: 'LINT' # 指定 type 为 LINT
-        version: '6.32.0' # 使用 PDM 版本号
-        ruleset: 'java/quickstart.xml' # 使用规则集
         fail-on-violation: true # 发现问题时失败
         fail-on: 'blocker,critical' # 指定 blocker 和 critical 级别问题时失败
         exclude-pattern: '**/*Test.java,**/proto/**' # 排除指定文件
