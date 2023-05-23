@@ -27,6 +27,26 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - name: PWD Scan
+      uses: jveres/pwd-action@v1
+      with:
+       type: 'LINT'
+
+    - name: Check for Blocker and Critical Issues
+      if: steps.pwd_scan.outputs.blocker != '0' || steps.pwd_scan.outputs.critical != '0'
+      run: |
+        if [ "${{ steps.pwd_scan.outputs.blocker }}" != "0" ]; then
+          echo "Blocker issues found"
+          exit 1
+        elif [ "${{ steps.pwd_scan.outputs.critical }}" != "0" ]; then
+          echo "Critical issues found"
+          exit 1
+        fi
+
+    - name: Pass Pipeline for No Blocker or Critical Issues
+      if: steps.pwd_scan.outputs.blocker == '0' && steps.pwd_scan.outputs.critical == '0'
+      run: echo 'No Blocker or Critical issues found'
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 

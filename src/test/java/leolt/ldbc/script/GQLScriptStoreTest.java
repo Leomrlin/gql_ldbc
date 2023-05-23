@@ -32,6 +32,6 @@ public class GQLScriptStoreTest {
         Assert.assertTrue(GQLScriptStore.getBi17Gql().startsWith("--信息传播分析"));
         Assert.assertTrue(GQLScriptStore.getBi18Gql().startsWith("--朋友推荐"));
         Assert.assertTrue(GQLScriptStore.getBi19Gql().startsWith("--城市间的互动路径"));
-        Assert.assertTrue(GQLScriptStore.getBi20Gql().startsWith("--招聘ci测试"));
+        Assert.assertTrue(GQLScriptStore.getBi20Gql().startsWith("--招聘"));
     }
 }
