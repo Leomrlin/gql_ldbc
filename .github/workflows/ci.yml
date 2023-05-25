@@ -14,6 +14,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - uses: pmd/pmd-github-action@v1
+      id: pmd
+      with:
+        version: '6.40.0'
+        sourcePath: '.'
+        rulesets: 'rulesets/java/quickstart.xml,ruleset.xml'
+
+    - name: Fail build if there are violations
+      if: steps.pmd.outputs.violations != 0
+      run: exit 1
+
     - name: Build and Test
       uses: docker://maven:3.6.3-jdk-11-slim
       with:
