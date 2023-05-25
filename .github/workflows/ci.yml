@@ -17,4 +17,17 @@ jobs:
     - name: Build and Test
       uses: docker://maven:3.6.3-jdk-11-slim
       with:
-        args: mvn -B -e clean test org.jacoco:jacoco-maven-plugin:prepare-agent
+        args: mvn -B -e clean test jacoco:report
+      env:
+        XMLSTARLET_INSTALL: /usr/bin/xmlstarlet
+
+    - name: Check code coverage
+      run: |
+        total_coverage=$(xmlstarlet sel -t -v "sum(//counter[@type='LINE']/@covered)" -n target/site/jacoco/jacoco.xml)
+        total_lines=$(xmlstarlet sel -t -v "sum(//counter[@type='LINE']/@missed)" -n target/site/jacoco/jacoco.xml)
+        if [ $(($total_coverage * 100 / ($total_coverage + $total_lines))) -lt 80 ]; then
+          echo "Code coverage is below 80%."
+          exit 1
+        fi
+      env:
+        XMLSTARLET_INSTALL: /usr/bin/xmlstarlet
