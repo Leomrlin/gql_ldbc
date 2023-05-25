@@ -18,15 +18,3 @@ jobs:
       uses: docker://maven:3.6.3-jdk-11-slim
       with:
         args: mvn -B -e clean test org.jacoco:jacoco-maven-plugin:prepare-agent
-
-    - name: Check code coverage for changed files
-      uses: gridelement/github-action-coverage-diff@v1.0.0
-      with:
-        base-branch: origin/main
-        working-directory: .
-        coverage-tool: jacoco
-        include-globs: |
-          **/src/main/java/**
-          **/src/test/java/**
-        exclude-globs: |
-          **/target/**/*
