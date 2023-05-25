@@ -10,7 +10,7 @@ public class GQLScriptStoreTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GQLScriptStoreTest.class);
 
-    @Test (enabled = false)
+    @Test
     public void testGQLScriptStore() throws IOException {
         Assert.assertTrue(GQLScriptStore.getBi01Gql().startsWith("--博文摘要"));
         Assert.assertTrue(GQLScriptStore.getBi02Gql().startsWith("--标签演变"));
