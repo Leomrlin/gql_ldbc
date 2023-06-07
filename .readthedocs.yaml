@@ -10,7 +10,5 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.8"
-jinja:
-  version: 2.11.3 # 指定使用Jinja2 2.11.3版本
 mkdocs:
   configuration: mkdocs.yml
