@@ -1,6 +1,8 @@
-site_name: GeaFlow
+site_name: GeaFlow Docs
 theme: readthedocs
 markdown_extensions:
   - admonition
   - toc
 python_version: 3.8 # 指定使用Python 3.8
+jinja2:
+  version: 2.11.3 # 指定使用Jinja2 2.11.3版本
