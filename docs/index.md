@@ -1,4 +1,15 @@
-# GeaFlow
-[中文文档](./docs-cn/introduction.md)
+# GeaFlow 中文文档
 
-[English Document](./docs-en/introduction.md)
+{%
+include-markdown "../README.md"
+start="<!--intro-start-->"
+end="<!--intro-end-->"
+%}
+
+# GeaFlow English Document
+
+{%
+include-markdown "../README_en.md"
+start="<!--intro-start-->"
+end="<!--intro-end-->"
+%}
