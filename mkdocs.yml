@@ -1,1 +1,6 @@
 site_name: GeaFlow
+theme: readthedocs
+markdown_extensions:
+  - admonition
+  - toc
+python_version: 3.8 # 指定使用Python 3.8
