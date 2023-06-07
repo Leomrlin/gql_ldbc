@@ -5,4 +5,4 @@ markdown_extensions:
   - toc
 python_version: 3.8 # 指定使用Python 3.8
 jinja2:
-  version: 2.11.3 # 指定使用Jinja2 2.11.3版本
+  version: 3.0.0 # 指定使用Jinja2 3.0.0版本

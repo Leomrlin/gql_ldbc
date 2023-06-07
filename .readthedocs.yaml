@@ -11,4 +11,6 @@ build:
   tools:
     python: "3.8"
 mkdocs:
+  jinja2:
+    version: 3.0.0 # 指定使用Jinja2 3.0.0版本
   configuration: mkdocs.yml
