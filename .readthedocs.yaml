@@ -14,6 +14,6 @@ build:
 mkdocs:
   configuration: mkdocs.yml
   # 指定使用的mkdocs版本
-  version: 1.4.3
+  version: 1.2.3
   # 指定使用的Jinja2版本
   jinja: 2.11.3
