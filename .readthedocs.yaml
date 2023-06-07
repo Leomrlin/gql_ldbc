@@ -1,8 +1,19 @@
-site_name: GeaFlow Docs
-theme: readthedocs
-markdown_extensions:
-  - admonition
-  - toc
-python_version: 3.8 # 指定使用Python 3.8
-jinja2:
-  version: 3.0.0 # 指定使用Jinja2 3.0.0版本
+# .readthedocs.yaml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+# Required
+version: 2
+
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.8"
+mkdocs:
+  configuration: mkdocs.yml
+
+# Optionally declare the Python requirements required to build your docs
+python:
+  install:
+    - requirements: docs/requirements.txt
